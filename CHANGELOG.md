@@ -11,3 +11,6 @@
 - +5 записей: модели 3 (Claude Haiku 5.5, Gemini 4 Argon, Mistral Large 4), продукты 1 (OpenAI Dots), безопасность 1 (атаки на coding-агентов через репозитории и plugins).
 - Обновлено 6: Claude Sonnet 5.5 (цена кэша −50 %, снятие Sonnet 4.5), Gemini 3.8 Flash, hermes-agent и deepseek-harness (CVE), MCP (ревизия 2026-07-28, уязвимости), метод model-routing.
 - К удалению 1: Claude Haiku 4.5 → archive.md (вытеснена Haiku 5.5).
+
+## 2026-10-08 — методы экономии лимита подписки (PR methods/subscription-limits)
+- +7 записей в registry/methods.md: проекты и кэш, полные сообщения, новый чат для новой темы, модель и усилие, лёгкий базовый контекст, скрытые потребители лимита, план и ранняя остановка.
