@@ -125,3 +125,17 @@
 - **Статус:** active
 - **Источники:** https://github.com/earendil-works/pi
 - **Добавлено:** 2026-10-07 · **Проверено:** 2026-10-07
+
+## Творческие инструменты с ИИ
+
+### ArtCraft (`storytold`): ArtCraft и «Crafting Apps»
+- **id:** `artcraft-storytold`
+- **Тип:** репозиторий (организация: desktop-приложение для ИИ-генерации + набор открытых аналогов Adobe)
+- **Что это:** две линейки. 1) **ArtCraft** — «IDE для управляемой ИИ-генерации картинок и видео»: 3D/2D-композиция сцены, позы персонажей, перенос внешности, image-to-3D, плюс обычные text-to-image / image-to-video через сторонние модели (Nano Banana, GPT-Image, Seedream, Flux, Veo, Kling, Sora 2, Grok, Midjourney и др.). 2) **Crafting Apps** на Rust — открытые «clean-room» аналоги Photoshop (PhotoCraft), Lightroom, Premiere, Illustrator, Acrobat, PowerPoint, Excel, AutoCAD, Pro Tools; [вендор] написаны ИИ-агентами (Claude Code) за считанные недели; у PhotoCraft есть управление внешними агентами через CLI, JSON-канал и MCP-сервер.
+- **Когда полезно:** ArtCraft — когда нужен контроль композиции и поз в ИИ-картинках/видео вместо «рулетки» промптов; Crafting Apps — бесплатная альтернатива для простых задач и редактор, которым может управлять ИИ-агент через MCP.
+- **Ограничения и риски:** [вендор] Crafting Apps — ранняя альфа, «не замена Photoshop для ежедневной профессиональной работы»; [независимо] сходство с Adobe во многом внешнее, есть баги и пробелы (OMG! Ubuntu, 08.10.2026); юридический статус «clean-room» при разработке ИИ ставится под сомнение (Phoronix, 07.10.2026); звёзды выросли до десятков тысяч за неделю — повод проверять внимательнее, а не доверять больше; ArtCraft в основном вызывает платные облачные модели (свои ключи/аккаунты); в корне репозитория artcraft есть `.env` и папка `secrets` — проверить, что там нет реальных ключей; код не читался.
+- **Факты (10.2026):** PhotoCraft — MIT/Apache-2.0, подписанные сборки для macOS/Windows, Linux, FreeBSD, веб; релизы v0.1 → v0.5 за неделю; фирменные названия и логотипы ArtCraft защищены товарным знаком.
+- **Метка:** WATCH (ArtCraft — STUDY)
+- **Статус:** watch
+- **Источники:** https://github.com/storytold · https://github.com/storytold/artcraft · https://github.com/storytold/photocraft · https://getartcraft.com · [вторичный] https://www.phoronix.com/news/Photocraft-Filmcraft-AI · [вторичный] https://www.omgubuntu.co.uk/2026/10/artcraft-free-photoshop-ai-clone
+- **Добавлено:** 2026-10-10 · **Проверено:** 2026-10-10
