@@ -26,3 +26,8 @@
 
 ## 2026-10-10 — ArtCraft (PR repos/artcraft)
 - +1 запись в registry/repos.md: ArtCraft (`storytold`) — новый раздел «Творческие инструменты с ИИ» (по запросу владельца, статус watch).
+
+## 2026-10-11 — еженедельное обновление (PR weekly/2026-10-11)
+- +1 запись: продукты — Claude Managed Agents (+ dynamic workflows, beta).
+- Обновлено 0, к удалению 0.
+- Не проверено: OpenAI, Google, Mistral, Meta, xAI (домены недоступны из сессии).
