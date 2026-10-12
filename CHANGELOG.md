@@ -31,3 +31,6 @@
 - +1 запись: продукты — Claude Managed Agents (+ dynamic workflows, beta).
 - Обновлено 0, к удалению 0.
 - Не проверено: OpenAI, Google, Mistral, Meta, xAI (домены недоступны из сессии).
+
+## 2026-10-12 — FreeLLMAPI (PR repos/freellmapi)
+- +1 запись в registry/repos.md: tashfeenahmed/freellmapi — новый раздел «Доступ к моделям: прокси и маршрутизация» (по запросу владельца, метка STUDY, независимая проверка пройдена).
