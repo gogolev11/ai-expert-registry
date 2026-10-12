@@ -26,3 +26,6 @@
 
 ## 2026-10-10 — ArtCraft (PR repos/artcraft)
 - +1 запись в registry/repos.md: ArtCraft (`storytold`) — новый раздел «Творческие инструменты с ИИ» (по запросу владельца, статус watch).
+
+## 2026-10-12 — FreeLLMAPI (PR repos/freellmapi)
+- +1 запись в registry/repos.md: tashfeenahmed/freellmapi — новый раздел «Доступ к моделям: прокси и маршрутизация» (по запросу владельца, метка STUDY, независимая проверка пройдена).
