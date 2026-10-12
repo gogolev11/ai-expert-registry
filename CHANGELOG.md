@@ -34,3 +34,7 @@
 
 ## 2026-10-12 — FreeLLMAPI (PR repos/freellmapi)
 - +1 запись в registry/repos.md: tashfeenahmed/freellmapi — новый раздел «Доступ к моделям: прокси и маршрутизация» (по запросу владельца, метка STUDY, независимая проверка пройдена).
+
+## 2026-10-12 — проверенные находки из рилсов (PR verified/2026-10-12)
+- +3 записи: products — Gemini Notebook (бывший NotebookLM); repos — Claude Code Setup (INSTALL), microsoft/markitdown (ADAPT).
+- Источник наводок — личная подборка рилсов; факты сверены с первоисточниками и независимыми агентами.
