@@ -38,3 +38,6 @@
 ## 2026-10-12 — проверенные находки из рилсов (PR verified/2026-10-12)
 - +3 записи: products — Gemini Notebook (бывший NotebookLM); repos — Claude Code Setup (INSTALL), microsoft/markitdown (ADAPT).
 - Источник наводок — личная подборка рилсов; факты сверены с первоисточниками и независимыми агентами.
+
+## 2026-10-15 — ColGrep-Agent (PR repos/colgrep-agent)
+- +1 запись в registry/repos.md: ColGrep + ColGrep-Agent-2B (LightOn) — раздел «Экономия контекста и понимание кода», метка ADAPT, по запросу владельца.
