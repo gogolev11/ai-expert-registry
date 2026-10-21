@@ -24,6 +24,22 @@
 
 ---
 
+### upstash/context7
+- **id:** `context7`
+- **Тип:** репозиторий + облачный сервис (MCP-сервер, CLI, Skills, plugin для Claude Code и других агентов)
+- **Что это:** подставляет в контекст агента актуальную документацию и примеры кода нужной версии библиотеки (Next.js, Prisma, Supabase и т.д.), чтобы агент не писал код по устаревшей памяти модели. Агент вызывает 2 инструмента: `resolve-library-id` (найти библиотеку) → `query-docs` (получить фрагменты документации по вопросу).
+- **Когда полезно:** вайбкодинг и разработка с популярными библиотеками, особенно свежими или быстро меняющимися; агент путает версии API или выдумывает функции.
+- **Ограничения и риски:**
+  - **Облако, закрытый backend:** в репозитории только код MCP-сервера, клиентов и Skills; поиск, разбор и обход документации — закрытый сервис Upstash. На серверы уходят текст запроса, название/ID библиотеки и служебные данные (токен OAuth или ключ, зашифрованный IP, id сессии, IDE и версия клиента); код и история разговора — нет. [вендор: README, context7.com/plans; подтверждено кодом `lib/api.ts`, `lib/encryption.ts`]
+  - **Чужой контент в контексте:** документацию в каталог добавляет кто угодно, поэтому инструкция из неё может подействовать на агента. Уже был случай — **CVE-2026-75130** (18.08.2026, CVSS v3 9.0 / v4 6.4): через функцию «Custom AI Instructions» можно было заставить агента украсть ключи из `.env` или удалять файлы. Исправлено в 2.1.3 по данным Mend (NVD и changelog версию исправления не называют — вероятно, исправлено на сервере); сейчас версия MCP-сервера 4.4.4, а plugin подключается к облачному серверу, который всегда последней версии. Vendor заявляет проверку моделью на prompt injection перед сохранением. [независимо: Mend; вендор]
+  - **Лимиты:** Free — 1 000 запросов в месяц, после — 20 в день до сброса; Pro — $10/место/мес, 2 000 запросов на место, сверх — $5 за 1 000. Ключ API необязателен, без ключа лимит ниже (размер не указан). [вендор: context7.com/plans, 2026-10-21]
+  - Описание инструментов просит модель не передавать в запросе ключи, пароли, персональные данные и закрытый код, но гарантирует это только модель, не код.
+- **Факты:** ~63.4k ★, ~3.1k форков, MIT (клиентский код); последний коммит 2026-10-21; plugin `context7` 1.0.4. Plugin для Claude Code — 2 файла настроек + README, они подключают удалённый сервер `https://mcp.context7.com/mcp?client=claude-code-plugin` (вход через OAuth); локального кода и хуков нет. Установка: `/plugin marketplace add upstash/context7` → `/plugin install context7@context7-marketplace` [docs: `docs/clients/claude-code.mdx`, `plugins/claude/context7/README.md`]. Альтернатива `npx ctx7 setup --claude` ставит CLI + Skill и выпускает ключ через OAuth — CLI не прочитан.
+- **Метка:** INSTALL — для plugin Claude Code (все его файлы прочитаны, локального кода нет; риск — в облачном сервисе, см. выше). Путь через `npx ctx7` — ADAPT.
+- **Статус:** active
+- **Источники:** https://github.com/upstash/context7 · https://context7.com/plans · https://mend.io/vulnerability-database/CVE-2026-75130/
+- **Добавлено:** 2026-10-21 · **Проверено:** 2026-10-21
+
 ### microsoft/markitdown
 - **id:** `markitdown`
 - **Тип:** репозиторий (утилита + MCP-сервер)
@@ -73,6 +89,22 @@
 - **Статус:** active
 - **Источники:** https://github.com/mattpocock/skills
 - **Добавлено:** 2026-10-07 · **Проверено:** 2026-10-07
+
+### addyosmani/agent-skills
+- **id:** `addyosmani-agent-skills`
+- **Тип:** репозиторий (коллекция Skills + plugin для Claude Code)
+- **Что это:** 25 Skills инженерного процесса для coding-агентов от Addy Osmani: Define (`interview-me`, `idea-refine`, `spec-driven-development`, `constraint-driven-development`) → Plan → Build (`incremental-implementation`, `test-driven-development`, `context-engineering`, `source-driven-development`…) → Verify (`browser-testing-with-devtools`, `debugging-and-error-recovery`) → Review (`code-review-and-quality`, `security-and-hardening`, `performance-optimization`…) → Ship (`git-workflow-and-versioning`, `ci-cd-and-automation`, `shipping-and-launch`…). Плюс 9 команд (`/spec`, `/plan`, `/build`, `/test`, `/review`, `/ship`…) и 4 subagent-ревьюера (код, безопасность, тесты, веб-производительность).
+- **Когда полезно:** разработка с агентом от идеи до релиза; нужен процесс, но не такой жёсткий, как `obra-superpowers`. Отдельные Skills можно брать по одному (например, `spec-driven-development`, `security-and-hardening`).
+- **Ограничения и риски:**
+  - Хуки (`session-start.sh`, `sdd-cache-*.sh`, `simplify-ignore.sh`) лежат в репозитории, но **plugin их не подключает** — в `plugin.json` нет раздела hooks. `sdd-cache-*` при ручном подключении делает `curl -I` к адресам документации. [вывод из кода]
+  - Skill `browser-testing-with-devtools` предлагает запуск `npx -y chrome-devtools-mcp@latest` — пакет ставится без подтверждения, версия не закреплена. В рекомендованном конфиге стоит `--isolated` — временный профиль Chrome, стирается после закрытия; режим `--autoConnect` даёт агенту ваш открытый Chrome со входами в аккаунты — включать только осознанно. [вывод из `SKILL.md`]
+  - В Claude Code `/review` конфликтует со встроенной командой — вызывать `/agent-skills:review`. [вендор]
+  - Пересекается с `obra-superpowers` и `mattpocock-skills` — ставить один набор, а не все сразу (иначе агент получает противоречащие процессы). [вывод]
+- **Факты:** ~108.9k ★, ~11.4k форков, MIT; plugin 0.6.13, релизов на GitHub нет; последний коммит 2026-10-13. Установка: `/plugin marketplace add addyosmani/agent-skills` → `/plugin install agent-skills@addy-agent-skills`. Невидимых Unicode-символов, `curl`/`wget` и скрытой передачи данных в Skills/командах/агентах нет; есть команды установки пакетов через `npx`/`npm`/`pip` (lighthouse, bundlesize и т.п.).
+- **Метка:** ADAPT — прочитаны манифесты, все хуки и скан всех файлов на сеть и скрытые символы; тексты 25 Skills построчно не прочитаны.
+- **Статус:** active
+- **Источники:** https://github.com/addyosmani/agent-skills
+- **Добавлено:** 2026-10-21 · **Проверено:** 2026-10-21
 
 ### obra/superpowers
 - **id:** `obra-superpowers`
