@@ -38,3 +38,6 @@
 ## 2026-10-12 — проверенные находки из рилсов (PR verified/2026-10-12)
 - +3 записи: products — Gemini Notebook (бывший NotebookLM); repos — Claude Code Setup (INSTALL), microsoft/markitdown (ADAPT).
 - Источник наводок — личная подборка рилсов; факты сверены с первоисточниками и независимыми агентами.
+
+## 2026-10-23 — AirLLM (PR repos/airllm)
+- +1 запись в registry/repos.md: lyogavin/airllm — новый раздел «Локальный запуск моделей», метка STUDY, по запросу владельца.
